@@ -35,5 +35,6 @@ resource "aws_instance" "web" {
   tags = {
     Name = "Demo"
     Owner = "stoffee"
+    TTL = "24"
       }   
 }
