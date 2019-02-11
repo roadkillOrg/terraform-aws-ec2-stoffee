@@ -35,6 +35,5 @@ resource "aws_instance" "web" {
   tags = {
     Name = "Owner"
     role = "stoffee"
-      }
-  }    
+      }   
 }
