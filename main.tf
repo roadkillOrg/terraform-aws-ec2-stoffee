@@ -56,12 +56,13 @@ resource "aws_autoscaling_group" "demo-ag" {
     version = "$$Latest"
   }
 }
-#output "public_ip" {
-#  description = "Public IP of instance (or EIP)"
-#  value       = "${coalesce(join("", aws_eip.default.*.public_ip), join("", aws_instance.demo.*.public_ip))}"
-#}
 
 output "private_ip" {
   description = "Private IP of instance"
   value       = "${join("", aws_instance.demo.*.private_ip)}"
+}
+
+output "public_dns" {
+  description = "Public DNS of instance (or DNS of EIP)"
+  value       = "${local.public_dns}"
 }
