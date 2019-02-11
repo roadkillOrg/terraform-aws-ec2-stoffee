@@ -39,24 +39,6 @@ resource "aws_instance" "demo" {
       }   
 }
 
-resource "aws_launch_template" "demo-lt" {
-  name_prefix   = "demo-"
-  image_id      = "ami-076b01046426fd1c5"
-  instance_type = "t2.micro"
-}
-
-resource "aws_autoscaling_group" "demo-ag" {
-  availability_zones = ["us-west-2a"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
-
-  launch_template {
-    id      = "${aws_launch_template.demo-lt.id}"
-    version = "$$Latest"
-  }
-}
-
 output "private_ip" {
   description = "Private IP of instance"
   value       = "${join("", aws_instance.demo.*.private_ip)}"
