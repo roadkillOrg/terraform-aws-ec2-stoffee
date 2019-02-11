@@ -33,6 +33,9 @@ resource "aws_instance" "web" {
   instance_type = "t2.large"
 
   tags = {
-    Name = "Demo"
+    Name = "TTL"
+    role = "24h"
+    Name = "Owner"
+    role = "stoffee"
   }
 }
