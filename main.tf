@@ -28,7 +28,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
 
@@ -37,4 +37,14 @@ resource "aws_instance" "web" {
     Owner = "stoffee"
     TTL = "24"
       }   
+}
+
+output "public_ip" {
+  description = "Public IP of instance (or EIP)"
+  value       = "${coalesce(join("", aws_eip.default.*.public_ip), join("", aws_instance.demo.*.public_ip))}"
+}
+
+output "private_ip" {
+  description = "Private IP of instance"
+  value       = "${join("", aws_instance.demo.*.private_ip)}"
 }
