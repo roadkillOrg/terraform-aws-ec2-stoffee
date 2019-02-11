@@ -46,7 +46,7 @@ resource "aws_launch_template" "demo-lt" {
 }
 
 resource "aws_autoscaling_group" "demo-ag" {
-  availability_zones = ["us-west-2"]
+  availability_zones = ["us-west-2a"]
   desired_capacity   = 1
   max_size           = 1
   min_size           = 1
