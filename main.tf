@@ -62,7 +62,7 @@ output "private_ip" {
   value       = "${join("", aws_instance.demo.*.private_ip)}"
 }
 
-output "public_dns" {
-  description = "Public DNS of instance (or DNS of EIP)"
-  value       = "${local.public_dns}"
+output "public_ip" {
+  description = "Public IP of instance (or EIP)"
+  value       = "${join("", aws_instance.demo.*.public_ip)}"
 }
