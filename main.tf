@@ -4,6 +4,14 @@ provider "aws" {
   region = "us-west-2"
 }
 
+variable "aws_access_key" {
+  description = "access key"
+}
+
+variable "aws_secret_key" {
+  description = "secret key"
+}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
