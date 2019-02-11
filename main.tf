@@ -39,6 +39,23 @@ resource "aws_instance" "demo" {
       }   
 }
 
+resource "aws_launch_template" "demo-lt" {
+  name_prefix   = "foobar"
+  image_id      = "ami-1a2b3c"
+  instance_type = "t2.micro"
+}
+
+resource "aws_autoscaling_group" "demo-ag" {
+  availability_zones = ["us-west-2"]
+  desired_capacity   = 1
+  max_size           = 1
+  min_size           = 1
+
+  launch_template {
+    id      = "${aws_launch_template.demo-lt.id}"
+    version = "$$Latest"
+  }
+}
 #output "public_ip" {
 #  description = "Public IP of instance (or EIP)"
 #  value       = "${coalesce(join("", aws_eip.default.*.public_ip), join("", aws_instance.demo.*.public_ip))}"
