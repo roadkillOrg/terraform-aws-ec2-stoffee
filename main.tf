@@ -40,7 +40,7 @@ resource "aws_instance" "demo" {
 }
 
 resource "aws_launch_template" "demo-lt" {
-  name_prefix   = "foobar"
+  name_prefix   = "demo-"
   image_id      = "ami-076b01046426fd1c5"
   instance_type = "t2.micro"
 }
