@@ -31,7 +31,8 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-
+  key_name = "aws-demo"
+  
   tags = {
     Name = "Demo"
     Owner = "stoffee"
