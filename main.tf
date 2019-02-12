@@ -38,7 +38,7 @@ resource "aws_instance" "demo" {
   tags = {
     Name = "Demo"
     # for demo, uncomment this
-    #Owner = "stoffee"
+    Owner = "stoffee"
     TTL = "24h"
       }   
 }
