@@ -1,7 +1,7 @@
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
-  region = "us-west-2"
+  region = "us-east-2"
 }
 
 variable "aws_access_key" {
@@ -35,7 +35,7 @@ resource "aws_instance" "demo" {
   
   tags = {
     Name = "Demo"
- #   Owner = "stoffee"
+    Owner = "stoffee"
     TTL = "24h"
       }   
 }
