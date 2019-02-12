@@ -33,7 +33,7 @@ resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
   #for demo, do not change this
   instance_type = "t2.large"
-  key_name = "aws-demo"
+  key_name = "cd-demo"
   
   tags = {
     Name = "Demo"
