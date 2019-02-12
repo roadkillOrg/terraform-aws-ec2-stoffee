@@ -1,6 +1,7 @@
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
+  #for demo, don't change this
   region = "us-east-2"
 }
 
@@ -30,12 +31,14 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
+  #for demo, do not change this
   instance_type = "t2.large"
   key_name = "aws-demo"
   
   tags = {
     Name = "Demo"
-    Owner = "stoffee"
+    # for demo, uncomment this
+    #Owner = "stoffee"
     TTL = "24h"
       }   
 }
