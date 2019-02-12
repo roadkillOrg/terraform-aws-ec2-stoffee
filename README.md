@@ -1,1 +1,1 @@
-# aws-tfe-demo
+# simple-aws-instance-tfe-demo
