@@ -36,9 +36,9 @@ resource "aws_instance" "demo" {
   key_name = "cd-demo"
   
   tags = {
-    Name = "Demo"
+    Name = "cdunlap simple ec2 demo"
     # for demo, uncomment this
-    Owner = "stoffee"
+   # Owner = "cdunlap@hashicorp.com"
     TTL = "24h"
       }   
 }
