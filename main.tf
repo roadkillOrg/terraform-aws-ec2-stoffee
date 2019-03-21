@@ -32,15 +32,15 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
   #do not change this, unless you want to trigger sentinel
-#  instance_type = "t2.micro"
-  instance_type = "t2.2xlarge"
+  instance_type = "t2.micro"
+#  instance_type = "t2.2xlarge"
   key_name = "cdunlap-demo"
   
   tags = {
-#    Name = "cdunlap simple ec2 demo"
+    Name = "cdunlap simple ec2 demo"
     #uncomment this for working, comment out for sentinel policy
-#    Owner = "cdunlap@hashicorp.com"
-#    TTL = "24h"
+    Owner = "cdunlap@hashicorp.com"
+    TTL = "24h"
       }   
 }
 
