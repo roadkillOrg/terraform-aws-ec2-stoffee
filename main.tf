@@ -1,8 +1,8 @@
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
-  #don't change this :)
-  region = "us-west-2"
+  #don't change this from us-west-2 :)
+  region = "us-west-1"
 }
 
 variable "aws_access_key" {
@@ -31,15 +31,15 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  #do not change this, unless you want to trigger sentinel
-  instance_type = "t2.micro"
-#  instance_type = "t2.2xlarge"
+  #do not change this from t2.micro, unless you want to trigger sentinel
+#  instance_type = "t2.micro"
+  instance_type = "t2.2xlarge"
   key_name = "cdunlap-demo"
   
   tags = {
     Name = "cdunlap simple ec2 demo"
-    #uncomment this for working, comment out for sentinel policy
-    Owner = "cdunlap@hashicorp.com"
+    #uncomment this for working, comment out for sentinel policy trigger
+#    Owner = "cdunlap@hashicorp.com"
     TTL = "24h"
       }   
 }
