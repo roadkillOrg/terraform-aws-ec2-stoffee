@@ -44,7 +44,7 @@ resource "aws_instance" "demo" {
   ami           = "${data.aws_ami.ubuntu.id}"
   #do not change this from t2.micro, unless you want to trigger sentinel
  instance_type = "t2.micro"
- instance_type = "t2.2xlarge"
+ #instance_type = "t2.2xlarge"
   key_name = "cdunlap-demo"
 
   tags = {
