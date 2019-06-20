@@ -51,7 +51,7 @@ resource "aws_instance" "demo" {
     Name = "cdunlap simple ec2 demo"
     #uncomment this for working, comment out for sentinel policy trigger
    Owner = "cdunlap@hashicorp.com"
-    TTL = "24hrs"
+    TTL = "24h"
       }
 }
 
