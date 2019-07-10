@@ -14,7 +14,7 @@ provider "aws" {
   secret_key = var.aws_secret_key
 
   #don't change this from us-west-2 :)
-  region = "us-west-1"
+  region = "us-west-2"
 }
 
 variable "aws_access_key" {
@@ -46,14 +46,14 @@ resource "aws_instance" "demo" {
 
   #do not change this from t2.micro, unless you want to trigger sentinel
   instance_type = "t2.micro"
-
   # instance_type = "t2.2xlarge"
-  key_name = "cdunlap-demo"
+  
+  key_name = "cdunlap-aws"
 
   tags = {
-    Name = "cdunlap simple ec2 demo"
+    Name = "cdunlap ec2 demo"
     #uncomment this for working, comment out for sentinel policy trigger
-    Owner = "cdunlap@hashicorp.com"
+    Owner = "chrisd"
     TTL   = "24hrs"
   }
 }
