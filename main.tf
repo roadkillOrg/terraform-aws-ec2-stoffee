@@ -9,6 +9,13 @@ terraform {
   }
 }
 
+resource "random_pet" "server" {
+  keepers = {
+    # Generate a new pet name each time we switch to a new AMI id
+    ami_id = var.ami_id
+  }
+}
+
 provider "aws" {
   access_key = var.aws_access_key
   secret_key = var.aws_secret_key
@@ -51,7 +58,7 @@ resource "aws_instance" "demo" {
   key_name = "cdunlap-aws"
 
   tags = {
-    Name = "cdunlap ec2 demo"
+    Name = random_pet.server.id
     #uncomment this for working, comment out for sentinel policy trigger
     Owner = "chrisd"
     TTL   = "24hrs"
@@ -67,4 +74,3 @@ output "public_ip" {
   description = "Public IP of instance (or EIP)"
   value       = join("", aws_instance.demo.*.public_ip)
 }
-
