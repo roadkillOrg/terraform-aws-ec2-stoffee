@@ -48,10 +48,9 @@ resource "aws_instance" "demo" {
   ami = data.aws_ami.ubuntu.id
 
   #do not change this from t2.micro, unless you want to trigger sentinel
-  # instance_type = "t2.micro"
-   instance_type = "t2.2xlarge"
+   instance_type = "t2.micro"
 
-  key_name = "cdunlap-aws"
+  key_name = var.ssh_keyname
 
   tags = {
     Name = random_pet.server.id
@@ -82,4 +81,7 @@ data "template_file" "cloud-init" {
 
 variable "boinc_project_id" {
   description = "Boinc Project id: boinccmd --lookup_account URL email password https://boinc.berkeley.edu/wiki/Boinccmd_tool"
+}
+variable "ssh_key_name" {
+  description = "You AWS SSH KeyName"
 }
