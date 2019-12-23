@@ -51,7 +51,7 @@ resource "aws_instance" "demo" {
    #instance_type = "t2.xlarge"
    instance_type = "t2.micro"
 
-  key_name = var.ssh_keyname
+  key_name = var.ssh_key_name
 
   tags = {
     Name = random_pet.server.id
