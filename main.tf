@@ -70,3 +70,12 @@ output "public_ip" {
   description = "Public IP of instance (or EIP)"
   value       = join("", aws_instance.demo.*.public_ip)
 }
+
+data "template_file" "vault" {
+  template = file("cloud-init.tpl")
+
+#  vars = {
+#    vaultdb_username = var.vaultdb_username
+#    vaultdb_password = var.vaultdb_password
+#  }
+}
