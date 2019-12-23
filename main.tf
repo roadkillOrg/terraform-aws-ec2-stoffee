@@ -4,7 +4,7 @@ terraform {
     organization = "cdunlap"
 
     workspaces {
-      name = "aws-sentinel-ec2-geofence-tagging-sizing"
+      name = "aws-sentinel-demo"
     }
   }
 }
