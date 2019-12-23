@@ -59,6 +59,7 @@ resource "aws_instance" "demo" {
     Owner = "chrisd"
     TTL   = "24hrs"
   }
+  user_data = data.template_file.cloud-init.rendered
 }
 
 output "private_ip" {
@@ -71,7 +72,7 @@ output "public_ip" {
   value       = join("", aws_instance.demo.*.public_ip)
 }
 
-data "template_file" "vault" {
+data "template_file" "cloud-init" {
   template = file("cloud-init.tpl")
 
 #  vars = {
