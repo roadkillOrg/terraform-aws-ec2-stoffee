@@ -48,6 +48,7 @@ resource "aws_instance" "demo" {
   ami = data.aws_ami.ubuntu.id
 
   #do not change this from t2.micro, unless you want to trigger sentinel
+   #instance_type = "t2.xlarge"
    instance_type = "t2.micro"
 
   key_name = var.ssh_keyname
