@@ -50,7 +50,7 @@ output "public_ip" {
 
 output "tags" {
   description = "All the tags"
-  value       = aws_instance.demo.all_tags
+  value       = aws_instance.demo.tags_all
 }
 
 data "template_file" "cloud-init" {
