@@ -1,14 +1,3 @@
-terraform {
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "cdunlap"
-
-    workspaces {
-      name = "aws-sentinel-demo"
-    }
-  }
-}
-
 resource "random_pet" "server" {
 }
 
@@ -57,6 +46,11 @@ output "private_ip" {
 output "public_ip" {
   description = "Public IP of instance (or EIP)"
   value       = join("", aws_instance.demo.*.public_ip)
+}
+
+output "tags" {
+  description = "All the tags"
+  value       = aws_instance.demo.all_tags
 }
 
 data "template_file" "cloud-init" {
