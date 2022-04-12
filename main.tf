@@ -40,15 +40,14 @@ resource "aws_instance" "demo" {
     Owner = "chrisd"
     TTL   = "24hrs"
   }
-  user_data = data.template_file.cloud-init.rendered
+#  user_data = data.template_file.cloud-init.rendered
 }
 
 
-data "template_file" "cloud-init" {
-  template = file("cloud-init.tpl")
-
-  vars = {
-    boinc_project_id = var.boinc_project_id
-  }
-}
+#data "template_file" "cloud-init" {
+#  template = file("cloud-init.tpl")
+#  vars = {
+#    boinc_project_id = var.boinc_project_id
+#  }
+#}
 
