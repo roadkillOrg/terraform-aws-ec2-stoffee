@@ -5,6 +5,11 @@ provider "aws" {
   region = "us-west-2"
 }
 
+terraform {
+  required_version = ">= 0.12"
+}
+
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -38,20 +43,6 @@ resource "aws_instance" "demo" {
   user_data = data.template_file.cloud-init.rendered
 }
 
-output "private_ip" {
-  description = "Private IP of instance"
-  value       = join("", aws_instance.demo.*.private_ip)
-}
-
-output "public_ip" {
-  description = "Public IP of instance (or EIP)"
-  value       = join("", aws_instance.demo.*.public_ip)
-}
-
-output "tags" {
-  description = "All the tags"
-  value       = aws_instance.demo.tags_all
-}
 
 data "template_file" "cloud-init" {
   template = file("cloud-init.tpl")
@@ -61,9 +52,3 @@ data "template_file" "cloud-init" {
   }
 }
 
-variable "boinc_project_id" {
-  description = "Boinc Project id: boinccmd --lookup_account URL email password https://boinc.berkeley.edu/wiki/Boinccmd_tool"
-}
-variable "ssh_key_name" {
-  description = "You AWS SSH KeyName"
-}
