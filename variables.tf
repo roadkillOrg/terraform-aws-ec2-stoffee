@@ -5,3 +5,7 @@
 variable "ssh_key_name" {
   description = "You AWS SSH KeyName"
 }
+
+variable "s3_bucket_name" {
+  description = "Your S3 bucket name"
+}

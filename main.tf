@@ -51,3 +51,17 @@ resource "aws_instance" "demo" {
 #  }
 #}
 
+
+resource "aws_s3_bucket" "bigbucket" {
+  bucket = var.s3_bucket_name
+
+  tags = {
+    Name        = "Secure S3 bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_acl" "secure" {
+  bucket = aws_s3_bucket.bigbucket.id
+  acl    = "private"
+}
