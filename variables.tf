@@ -10,7 +10,9 @@ variable "s3_bucket_name" {
   description = "Your S3 bucket name"
 }
 
+/*
 variable "s3_bucket_acl" {
   description = "Your S3 bucket ACL"
   default = "private"
 }
+*/
