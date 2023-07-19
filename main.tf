@@ -61,7 +61,9 @@ resource "aws_s3_bucket" "bigbucket" {
   }
 }
 
+/*
 resource "aws_s3_bucket_acl" "secure" {
   bucket = aws_s3_bucket.bigbucket.id
   acl    = var.s3_bucket_acl
 }
+*/
